@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <style>
+        /* CSS for black background with centered gold text */
+        body {
+            background-color: black; /* Set the background color to black */
+            color: #b8860b; /* Set the text color to gold */
+            text-align: center; /* Center align the text */
+            padding: 50px; /* Add some padding for spacing */
+            font-family: Arial, sans-serif; /* Set the font family */
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Increase the font size of heading */
+            margin-bottom: 30px; /* Add some margin below heading */
+        }
+
+        p {
+            font-size: 1.2rem; /* Set font size for paragraphs */
+            line-height: 1.6; /* Set line height for better readability */
+            margin-bottom: 20px; /* Add some margin below paragraphs */
+        }
+
+        a {
+            color: gold; /* Set link color to gold */
+            text-decoration: none; /* Remove underline from links */
+            font-weight: bold; /* Make links bold */
+            border: 2px solid gold; /* Add border to links */
+            padding: 10px 20px; /* Add padding to links */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            transition: background-color 0.3s, color 0.3s; /* Add smooth transition */
+        }
+
+        a:hover {
+            background-color: gold; /* Change background color on hover */
+            color: black; /* Change text color on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing HTML content goes here -->
+    <h1> Welcome to ODYSSEY"24</h1>
+
+    <!-- Text content -->
+    <p>Click The Below Button To pay!!</p>
+    
+    <!-- Convert the button into a clickable link -->
+    <form>
+    <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Nl8BsQeguR0JKx" async></script>
+</form>
+
+
+    <script>
+        // Define the Razorpay payment function
+        function payWithRazorpay() {
+            var options = {
+                "key": "YOUR_RAZORPAY_API_KEY", // Replace with your Razorpay API Key
+                "amount": 50000, // Amount in paise
+                "currency": "INR", // Currency
+                "name": "Your Company Name", // Your company name
+                "description": "Purchase Description", // Purchase description
+                "image": "https://example.com/your_logo.png", // Your company logo
+                "handler": function (response) {
+                    alert('Payment ID: ' + response.razorpay_payment_id);
+                    // You can handle success here, for example, send payment ID to your server for verification
+                },
+                "prefill": {
+                    "name": "John Doe", // Buyer name
+                    "email": "john@example.com", // Buyer email
+                    "contact": "9999999999" // Buyer contact number
+                },
+                "theme": {
+                    "color": "#3399cc" // Button color
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+    </script>
+</body>
+</html>
